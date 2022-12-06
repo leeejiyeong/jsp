@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.micol.prj.member.map.MemberMapper">
+	
+	<select id = "memberSelectList" resultType="co.micol.prj.member.service.MemberVO">
+		SELECT * FROM MEMBER
+	</select>
+
+	<select id = "memberSelect" resultType="co.micol.prj.member.service.MemberVO">
+		SELECT * FROM MEMBER 
+		WHERE MEMBER_ID = #{memberId}
+	</select>
+	
+	<insert id = "memberInsert" parameterType="co.micol.prj.member.service.MemberVO">
+		INSERT INTO MEMBER
+		VALUES(#{memberId}, #{memberName}, #{memberPassword}, 
+			   #{memberAge}, #{memberAddress}, #{memberTel}, #{memberAuthor})
+	</insert>
+	
+	<delete id = "memberDelete" parameterType="co.micol.prj.member.service.MemberVO">
+		DELETE FROM MEMBER
+		WHERE MEMBER_ID = #{memberId}
+	</delete>
+	
+	<update id="memberUpdate">
+		UPDATE MEMBER
+		SET MEMBER_PASSWORD = #{memberPassword}, MEMBER_ADDRESS = #{memberAddress}, 
+			MEMBER_TEL = #{memberTel}, MEMBER_AUTHOR = #{memberAuthor}
+		WHERE MEMBER_ID = #{memberId}
+	</update>
+	
+	<select id="isIdCheck" resultType="boolean">
+		SELECT CASE WHEN COUNT(member_id) = 1 THEN 0 ELSE 1 END AS ID
+		FROM MEMBER
+		WHERE member_id = #{id}
+		<!-- 변수명이 넘어오는거기 때문에 #{}안에 memberId가 아니라 그냥id가 들어간다. -->
+		<!-- 쿼리가 select면 태그도 select, delete면 태그도 delete 쓴다 -->
+	</select>
+</mapper>
