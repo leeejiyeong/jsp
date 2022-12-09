@@ -56,8 +56,7 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public void noticeHitUpdate(int id) {
-		//return map.noticeHitUpdate();
-		
+	public void noticeHitUpdate(int id) {	
+		map.noticeHitUpdate(id);
 	}
 }

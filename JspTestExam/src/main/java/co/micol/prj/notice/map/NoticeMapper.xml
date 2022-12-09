@@ -12,15 +12,26 @@
 	<insert id="noticeInsert" parameterType="co.micol.prj.notice.service.NoticeVO">
 		<selectKey keyProperty="noticeId" resultType="int" order="BEFORE">
 			SELECT 
- 				CASE WHEN MAX(NOTICE_ID) IS NULL THEN 1 ELSE MAX(NOTICE_ID) + 1 END AS ID
-			FROM NOTICE;
+ 				CASE WHEN MAX(NOTICE_ID) IS NULL THEN 1 ELSE MAX(NOTICE_ID) + 1 END AS NOTICEID
+			FROM NOTICE
 		</selectKey>
 			INSERT INTO NOTICE
-			VALUES(#{noticeId}, #{noticeWriter}, #{noticeDate}, #{noticeTitle},#{noticeSubject},0)
+			VALUES(#{noticeId}, #{noticeWriter}, #{noticeDate}, #{noticeTitle},#{noticeSubject},0,#{noticeFile}, #{noticeFileDir})
 	</insert>
 	
 	<update id="noticeUpdate" parameterType="co.micol.prj.notice.service.NoticeVO">
-		
+		UPDATE NOTICE
+		<set>
+			<if test="noticeId != null">NOTICE_ID = #{noticeId},</if>
+			<if test="noticeWriter != null">NOTICE_WRITER = #{noticeWriter},</if>
+			<if test="noticeDate != null">NOTICE_DATE = #{noticeDate},</if>
+			<if test="noticeTitle != null">NOTICE_TITLE = #{noticeTitle},</if>
+			<if test="noticeSubject != null">NOTICE_SUBJECT = #{noticeSubject},</if>
+		 	<if test="noticeHit != null">NOTICE_HIT = #{noticeHit},</if>
+			<if test="noticeFile != null">NOTICE_FILE = #{noticeFile},</if>
+			<if test="noticeFileDir != null">NOTICE_FILE_DIR = #{noticeFileDir}</if>
+		</set>
+		WHERE NOTICE_ID = #{noticeId}
 	</update>
 	
 	<delete id="noticeDelete" parameterType="co.micol.prj.notice.service.NoticeVO">
