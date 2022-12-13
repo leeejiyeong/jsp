@@ -25,13 +25,15 @@ import co.micol.prj.member.command.MemberEdit;
 import co.micol.prj.member.command.MemberSelect;
 import co.micol.prj.member.command.MemberUpdate;
 import co.micol.prj.notice.command.NoticeDelete;
-import co.micol.prj.notice.command.NoticeEdit;
 import co.micol.prj.notice.command.NoticeEditForm;
 import co.micol.prj.notice.command.NoticeInsert;
 import co.micol.prj.notice.command.NoticeInsertForm;
 import co.micol.prj.notice.command.NoticeList;
 import co.micol.prj.notice.command.NoticeSelect;
-import co.micol.prj.notice.command.NoticeUpdate;
+import co.micol.prj.notice.command.noticeAddAjax;
+import co.micol.prj.notice.command.noticeAjax;
+import co.micol.prj.notice.command.noticeListAjax;
+import co.micol.prj.notice.command.NoticeEdit;
 import co.micol.prj.member.command.MemberJoin;
 
 //@WebServlet("*.do")
@@ -64,9 +66,13 @@ public class FrontController extends HttpServlet {
 		map.put("/noticeSelect.do", new NoticeSelect());	//공지사항 상세보기(목록에서 선택)
 		map.put("/noticeInsert.do", new NoticeInsert());	//공지사항 등록
 		map.put("/noticeEditForm.do", new NoticeEditForm());	//공지사항 수정 폼
-		map.put("/noticeUpdate.do", new NoticeUpdate());	//공지사항 수정
-		map.put("/noticeEdit.do", new NoticeEdit());		//공지사항 수정
+		map.put("/noticeEdit.do", new NoticeEdit());	//공지사항 수정
 		map.put("/noticeDelete.do", new NoticeDelete());	//공지사항 삭제
+		
+		//Ajax 연습용
+		map.put("/noticeAjax.do", new noticeAjax());
+		map.put("/noticeListAjax.do", new noticeListAjax());
+		map.put("/noticeAddAjax.do", new noticeAddAjax());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

@@ -28,6 +28,7 @@
 			<c:if test="${not empty id }">
 				<li><a class="menuLink" href="memberLogout.do">Logout</a></li>
 			</c:if>
+			<li><a class="menuLink" href="noticeAjax.do">NoticeAjax</a></li>
 		</ul>
 	</nav>
 </body>
