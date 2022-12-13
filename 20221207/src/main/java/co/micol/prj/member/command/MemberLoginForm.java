@@ -1,16 +1,15 @@
-package co.micol.prj;
+package co.micol.prj.member.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.micol.prj.common.Command;
 
-public class MainCommand implements Command {
+public class MemberLoginForm implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		//처음 도착하는 페이지로 감
-		return "main/main";		//돌아갈 jsp페이지명
+		return "member/memberLoginForm.tiles";
 	}
 
 }

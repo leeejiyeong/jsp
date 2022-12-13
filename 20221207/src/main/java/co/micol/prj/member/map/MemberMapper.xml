@@ -9,6 +9,7 @@
 	<select id = "memberSelect" resultType="co.micol.prj.member.service.MemberVO">
 		SELECT * FROM MEMBER 
 		WHERE MEMBER_ID = #{memberId}
+		<if test = "memberPassword !=null">AND MEMBER_PASSWORD = #{memberPassword}</if>
 	</select>
 	
 	<insert id = "memberInsert" parameterType="co.micol.prj.member.service.MemberVO">
@@ -24,8 +25,12 @@
 	
 	<update id="memberUpdate">
 		UPDATE MEMBER
-		SET MEMBER_PASSWORD = #{memberPassword}, MEMBER_ADDRESS = #{memberAddress}, 
-			MEMBER_TEL = #{memberTel}, MEMBER_AUTHOR = #{memberAuthor}
+		<set>
+			<if test="memberPassword != null">SET MEMBER_PASSWORD = #{memberPassword},</if>
+			<if test="memberAddress != null">MEMBER_ADDRESS = #{memberAddress},</if> 
+			<if test="memberTel != null">MEMBER_TEL = #{memberTel},</if> 
+			<if test="memberAuthor != null">MEMBER_AUTHOR = #{memberAuthor}</if> 
+		</set>
 		WHERE MEMBER_ID = #{memberId}
 	</update>
 	

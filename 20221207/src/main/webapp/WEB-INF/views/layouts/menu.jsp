@@ -16,7 +16,7 @@
 			<li><a class="menuLink" href="memberJoinForm.do">Join</a></li>
 			<li><a class="menuLink" href="#">Content</a></li>
 			<li><a class="menuLink" href="memberList.do">Member</a></li>
-			<li><a class="menuLink" href="#">Login</a></li>
+			<li><a class="menuLink" href="memberLoginForm.do">Login</a></li>
 			<li><a class="menuLink" href="#">Logout</a></li>
 		</ul>
 	</nav>

@@ -16,6 +16,8 @@ import co.micol.prj.common.Command;
 import co.micol.prj.member.command.AjaxMemberIdCheck;
 import co.micol.prj.member.command.MemberJoinForm;
 import co.micol.prj.member.command.MemberList;
+import co.micol.prj.member.command.MemberLoginForm;
+import co.micol.prj.member.command.MemberLogin;
 import co.micol.prj.member.command.MemberJoin;
 
 //@WebServlet("*.do")
@@ -36,6 +38,8 @@ public class FrontController extends HttpServlet {
 		map.put("/memberJoinForm.do", new MemberJoinForm()); // 회원가입폼
 		map.put("/AjaxMemberIdCheck.do", new AjaxMemberIdCheck()); // 회원아이디 중복체크
 		map.put("/memberJoin.do", new MemberJoin()); // 회원가입 처리
+		map.put("/memberLoginForm.do", new MemberLoginForm());
+		map.put("/memberLogin.do", new MemberLogin());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -61,6 +65,7 @@ public class FrontController extends HttpServlet {
 				// ajax
 				response.setContentType("text/html; charset=UTF-8");
 				response.getWriter().print(viewPage.substring(5)); 	// Ajax: <-(총 5자) 뒤부터 헤아려서 쓰라는거임
+				return;
 			} else if (!viewPage.endsWith(".tiles")) {
 				viewPage = "WEB-INF/views/" + viewPage + ".jsp"; 	// 타일즈 적용 안하는것
 			}
