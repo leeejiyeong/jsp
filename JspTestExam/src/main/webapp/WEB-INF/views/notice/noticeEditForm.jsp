@@ -47,7 +47,7 @@
 				<input type="hidden" name="noticeId" value="${notice.noticeId }">
 				<input type="submit" value="수정완료">&nbsp;&nbsp;
 				<input type="reset" value="취소">
-				<input type="button" value="목록으로" onclick="location.href='noticelist.do'">
+				<input type="button" value="목록으로" onclick="location.href='noticeList.do'">
 			</div>
 			</form>
 		</div>
