@@ -27,9 +27,9 @@ public class noticeAddAjax implements Command {
 	}
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
+		NoticeVO vo = new NoticeVO();
 		if (isMultiRequest(request)) {	//multipart 요청일때
 			NoticeService dao = new NoticeServiceImpl();
-			NoticeVO vo = new NoticeVO();
 			
 			String saveDir = request.getServletContext().getRealPath("/attach/");		//현재 프로젝트 경로
 			int maxSize = 1024 * 1024 * 1024;		//최대 10mb까지 업로드
@@ -56,22 +56,13 @@ public class noticeAddAjax implements Command {
 				
 				int n = dao.noticeInsert(vo);
 				
-				if(n != 0) {
-					//{"retCode":"Success"}
-					json ="{\"retCode\":\"Success\"}";
-				}else {
-					//{"retCode":"Fail"}
-					json ="{\"retCode\":\"Fail\"}";
-				}
 				
 			}catch(IOException e){
 				e.printStackTrace();
 			}
 			
-			return "Ajax;" + json;
 			
 		} else {	//multipart요청이 아닐때 
-			NoticeVO vo = new NoticeVO();
 			vo.setNoticeWriter(request.getParameter("writer"));
 			vo.setNoticeTitle(request.getParameter("title"));
 			vo.setNoticeSubject(request.getParameter("subject"));
@@ -80,15 +71,18 @@ public class noticeAddAjax implements Command {
 			NoticeService service = new NoticeServiceImpl();
 			service.noticeInsert(vo);
 
-			String json = null;
-			ObjectMapper mapper = new ObjectMapper();
-			try {
-				json = mapper.writeValueAsString(vo);
-			} catch (JsonProcessingException e) {
-				e.printStackTrace();
-			}
-			return "Ajax:" + json;
+			
 		}//=> end of if(isMultipart)
+		
+		String json = null;
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			json = mapper.writeValueAsString(vo);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return "Ajax:" + json;
+		
 	}
 
 }

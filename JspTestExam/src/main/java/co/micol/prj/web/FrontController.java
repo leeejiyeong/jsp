@@ -34,6 +34,7 @@ import co.micol.prj.notice.command.noticeAddAjax;
 import co.micol.prj.notice.command.noticeAjax;
 import co.micol.prj.notice.command.noticeDelAjax;
 import co.micol.prj.notice.command.noticeListAjax;
+import co.micol.prj.notice.command.noticeSearchAjax;
 import co.micol.prj.notice.command.noticeUpdateAjax;
 import co.micol.prj.notice.command.NoticeEdit;
 import co.micol.prj.member.command.MemberJoin;
@@ -77,6 +78,7 @@ public class FrontController extends HttpServlet {
 		map.put("/noticeAddAjax.do", new noticeAddAjax());
 		map.put("/noticeDelAjax.do", new noticeDelAjax());
 		map.put("/noticeUpdateAjax.do", new noticeUpdateAjax());
+		map.put("/noticeSearchAjax.do", new noticeSearchAjax());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

@@ -86,7 +86,7 @@ function addMultiNotice(e) {
 	formData.append('noticeWriter', writer);
 	formData.append('noticeTitle', title);
 	formData.append('noticeSubject', subject);
-	formData.append('noticeDate', today.yyyymmdd());
+	formData.append('noticeDate', today.ymd());
 	formData.append('nfile', nfile.files[0]);
 
 	const xhtp = new XMLHttpRequest();

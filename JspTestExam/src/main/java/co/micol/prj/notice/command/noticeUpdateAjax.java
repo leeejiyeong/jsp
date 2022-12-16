@@ -23,6 +23,7 @@ public class noticeUpdateAjax implements Command {
 		vo.setNoticeWriter(request.getParameter("writer"));
 		vo.setNoticeTitle(request.getParameter("title"));
 		vo.setNoticeDate(Date.valueOf(request.getParameter("date")));
+		vo.setNoticeSubject(request.getParameter("subject"));
 		
 		NoticeService service =new NoticeServiceImpl();
 		int cnt = service.noticeUpdate(vo);
