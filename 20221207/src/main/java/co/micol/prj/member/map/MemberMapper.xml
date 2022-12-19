@@ -26,10 +26,19 @@
 	<update id="memberUpdate">
 		UPDATE MEMBER
 		<set>
+<<<<<<< HEAD
 			<if test="memberPassword != null">SET MEMBER_PASSWORD = #{memberPassword},</if>
 			<if test="memberAddress != null">MEMBER_ADDRESS = #{memberAddress},</if> 
 			<if test="memberTel != null">MEMBER_TEL = #{memberTel},</if> 
 			<if test="memberAuthor != null">MEMBER_AUTHOR = #{memberAuthor}</if> 
+=======
+		<if test="memberName != null">MEMBER_NAME = #{memberName},</if>
+		<if test="memberPassword != null">MEMBER_PASSWORD = #{memberPassword},</if>
+		<if test="memberAddress != null">MEMBER_ADDRESS = #{memberAddress},</if> 
+		<if test="memberAge != null">MEMBER_AGE = #{memberAge},</if> 
+		<if test="memberTel != null">MEMBER_TEL = #{memberTel},</if> 
+		<if test="memberAuthor != null">MEMBER_AUTHOR = #{memberAuthor}</if> 
+>>>>>>> branch 'main' of https://github.com/leeejiyeong/jsp.git
 		</set>
 		WHERE MEMBER_ID = #{memberId}
 	</update>

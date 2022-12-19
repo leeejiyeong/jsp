@@ -1,0 +1,58 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div align="center">
+		<table border="1">
+			<tr>
+				<th width="150">작성자</th>
+				<td width="200">${notice.noticeWriter }</td>
+				<th width="150">작성일자</th>
+				<td width="200">${notice.noticeDate }</td>
+			</tr>
+			<tr>
+				<th>제목</th>
+				<td colspan="3">${notice.noticeTitle }</td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td colspan="3"><textarea rows="10" cols="50">${notice.noticeSubject}</textarea>
+				</td>
+			</tr>
+			<tr>
+				<th>첨부파일</th>
+				<td colspan="3">${notice.noticeFile }</td>
+			</tr>
+		</table>
+	</div><br>
+	<div>
+		<form id="frm" method="post">
+			<c:if test="${name eq notice.noticeWriter }">
+				<button type="button" onclick="noticedit('E')">글 수정</button>
+				<button type="button" onclick="noticedit('D')">글 삭제</button>
+			</c:if>
+			<input type="hidden" name="${notice.noticeId }">
+		</form>
+	</div>
+<script type="text/javascript">
+	function noticeEdit(str){
+		if(str == 'E'){
+			frm.action="noticeEditForm.do";
+		}else{
+			let yn = confirm("작성글을 삭제하겠습니까?");
+			if(yn){
+				frm.action="noticeDelete.do";
+			}else{
+				return false;
+			}
+		}
+		frm.submit();
+	}
+</script>
+</body>
+</html>

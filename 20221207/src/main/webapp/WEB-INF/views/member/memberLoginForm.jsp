@@ -7,7 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
 <div align="center">
+=======
+	<div align="center">
+>>>>>>> branch 'main' of https://github.com/leeejiyeong/jsp.git
 		<div><h1>로그인</h1></div>
 		<div>
 			<form id="frm" action="memberLogin.do" method="post">
