@@ -13,7 +13,7 @@ public class NoticeVO {
 	private int noticeId;
 	private String noticeWriter;
 	
-	@JsonFormat(pattern="yyyy-MM-dd", locale="Asia/Seoul")
+	@JsonFormat(pattern="yyyy-MM-dd", timezone="Asia/Seoul")
 	private Date noticeDate;
 	private String noticeTitle;
 	private String noticeSubject;

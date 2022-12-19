@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style>
+        #data {
+            display: none;
+        }
+
+        #target span {
+            display: inline-block;
+            width: 100px;
+            margin: 2px;
+            border: 1px solid black;
+            background-color: khaki;
+            padding: 2px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="data">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque beatae quis perspiciatis libero, explicabo odit ipsam unde itaque, illum ut eaque illo placeat distinctio, expedita obcaecati sed sint exercitationem rerum.
+    </div>
+    <input type="text" id="read">
+    <button id="write">찾기</button>
+
+    <div id="target">
+
+    </div>
+
+    <script>
+        //텍스트 추출   
+        let data = document.getElementById('data').innerText;
+        console.log(data);
+
+        //배열로 바꾸기
+        let dtAry = [];
+        dtAry = data.trim().split(' ');
+        console.log(dtAry);
+
+        //span으로 만들기
+        div = document.getElementById('target');
+        console.log(div);
+        dtAry.forEach(item => {
+            let span = document.createElement('span');
+            span.innerText = item;
+            div.append(span);
+        })
+
+        //찾기 누르면 글자 지워지게 하기
+        document.getElementById('write').addEventListener('click',removeSpan);
+
+        //지워지게 하는 함수 
+        function removeSpan(){
+            let findTxt = document.getElementById('read').value;
+            console.log(findTxt);
+            document.querySelectorAll('#target span').forEach(span => {
+               if(findTxt == span.innerText){
+                   span.remove();
+               }
+            })
+            //입력값 초기화(입력값 지우고 커서 생기게)
+            document.getElementById('read').value = '';
+            document.getElementById('read').focus();
+            
+        }
+
+
+    </script>
+</body>
+
+</html>
